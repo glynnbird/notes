@@ -1,10 +1,13 @@
 <script setup>
+  const { addNote } = useNotesList()
   const now = new Date().toISOString()
-  const doc = ref( {title: '', body: '', timestamp: now })
+  const doc = ref( {title: '', body: '', timestamp: now, lastEdited: 0 })
 
-  function add() {
-    console.log(doc)
+  async function add() {
+    await addNote(doc.value, true)
+    await navigateTo('/')
   }
+
 </script>
 <template>
   <PageTitle title="Add"></PageTitle>

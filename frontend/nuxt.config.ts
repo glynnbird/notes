@@ -5,18 +5,15 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  modules: [
-    // from https://github.com/vite-pwa/nuxt?tab=readme-ov-file#-usage
-    '@vite-pwa/nuxt',
-    // from https://vuetifyjs.com/en/getting-started/installation/#manual-setup
-    async (options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', config => {
-        if (config && config.plugins) {
-          config.plugins.push(vuetify({ autoImport: true }))
-        }
-      })
-    }
-  ],
+  modules: [// from https://github.com/vite-pwa/nuxt?tab=readme-ov-file#-usage
+  '@vite-pwa/nuxt', // from https://vuetifyjs.com/en/getting-started/installation/#manual-setup
+  async (options, nuxt) => {
+    nuxt.hooks.hook('vite:extendConfig', config => {
+      if (config && config.plugins) {
+        config.plugins.push(vuetify({ autoImport: true }))
+      }
+    })
+  }, "@nuxtjs/mdc"],
   app: {
     head: {
       link: [

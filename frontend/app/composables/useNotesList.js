@@ -43,7 +43,7 @@ export default function () {
   async function addNote(note, push = true) {
     setBusy()
     try {
-      console.log('API', '/api/add')
+      console.log('API', '/api/add', note)
       const ret = await $api('/api/add', { body: note })
       note.id = note.id
       if (push) {
@@ -70,7 +70,7 @@ export default function () {
     //  fetch the list from the API
     try {
       console.log('API', '/api/get')
-      const r = await $api('/api/get', { body: { id } })
+      const r = await $api('/api/get', { body: JSON.stringify({ id }) })
       retval = r.doc
     } catch (e) {
       console.error('Could not load note', id, e)

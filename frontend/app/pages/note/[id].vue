@@ -32,9 +32,13 @@ async function edit() {
 @import url("~/assets/markdown.css");
 </style>
 <template>
-  <MDCRenderer v-if="ast?.body" class="markdown-body" :body="ast.body" :data="ast.data" />
-  <div v-if="loaded">
-    <v-btn color="secondary" @click="edit">Edit</v-btn>
-    <v-btn color="error" @click="deleteThisNote">Delete</v-btn>
-  </div>
+  <v-card>
+    <v-card-text>
+       <MDCRenderer v-if="ast?.body" class="markdown-body" :body="ast.body" :data="ast.data" />
+    </v-card-text>
+    <v-card-actions v-if="loaded">
+      <v-btn color="secondary" @click="edit">Edit</v-btn>
+      <v-btn color="error" @click="deleteThisNote">Delete</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>

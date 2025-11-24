@@ -15,6 +15,14 @@
 
 </script>
 <template>
-  <PageTitle title="Edit"></PageTitle>
-  <AddForm v-if="currentNote != null" :doc="currentNote" buttonTitle="Edit" @submit="edit()"></AddForm>
+  <v-card>
+    <v-card-title>Edit</v-card-title>
+    <v-card-text>
+      <AddForm v-if="currentNote != null" :doc="currentNote"></AddForm>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn color="primary" @click="edit">Edit</v-btn>
+    </v-card-actions>
+  </v-card>
+
 </template>

@@ -6,7 +6,7 @@ const config = useRuntimeConfig()
 const apiHome = config.public['apiBase'] || window.location.origin
 </script>
 <template>
-  <PageTitle title="About Notes"></PageTitle>
+  <h2>About Notes</h2>>
   <div>
     A simple notes recorder
   </div>

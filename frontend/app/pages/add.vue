@@ -10,6 +10,13 @@
 
 </script>
 <template>
-  <PageTitle title="Add"></PageTitle>
-  <AddForm :doc="doc" buttonTitle="Add" @submit="add()"></AddForm>
+  <v-card>
+    <v-card-title>Add</v-card-title>
+    <v-card-text>
+      <AddForm :doc="doc"></AddForm>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn  color="primary" @click="add">Add</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>

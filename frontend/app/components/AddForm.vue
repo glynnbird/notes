@@ -10,7 +10,7 @@ const emitEvent = defineEmits(['submit'])
 <template>
   <v-form>
     <v-text-field v-model="doc.title" label="Title" required autofocus></v-text-field>
-    <v-textarea v-model="doc.body" label="Body"></v-textarea>
+    <v-textarea v-model="doc.body" label="Body" style="height: 800px"></v-textarea>
     <v-btn :disabled="doc.title.length === 0 || doc.body.length === 0 || busy" color="warning" class="mr-4" @click="emitEvent('submit')">
       {{ buttonTitle }}
     </v-btn>

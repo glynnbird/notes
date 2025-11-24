@@ -65,7 +65,7 @@ resource "cloudflare_pages_project" "frontend_project" {
         }
 
         kv_namespaces = {
-          TVKV = { 
+          NOTESKV = { 
             namespace_id = cloudflare_workers_kv_namespace.noteskv.id
           }
         }

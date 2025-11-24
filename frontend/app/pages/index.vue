@@ -1,5 +1,5 @@
 <script setup>
-  const { notes, resetCurrentNote } = useNotesList()
+  const { recentNotes, resetCurrentNote } = useNotesList()
   resetCurrentNote()
 </script>
 <template>
@@ -7,6 +7,6 @@
   <PWARefresh></PWARefresh>
 
   <v-list>
-    <v-list-item v-for="note in notes" :title="note.title" :to="`/note/${note.id}`"></v-list-item>
+    <v-list-item v-for="note in recentNotes" :title="note.title" :to="`/note/${note.id}`"></v-list-item>
   </v-list>
 </template>

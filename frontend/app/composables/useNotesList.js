@@ -56,6 +56,7 @@ export default function () {
         const ind = locateIndex(note.id)
         if (ind !== -1) {
           notes.value[ind] = note
+          notes.value[ind].lastEdited = new Date().getTime()
         }
       }
       localStorage.setItem(NOTES_KEY, JSON.stringify(notes.value))
@@ -150,5 +151,9 @@ export default function () {
     }, 1)
   }
 
-  return { notes, locateIndex, addNote, loadFromAPI, deleteNote, getNoteFromAPI, calculateNoteKey, currentNote, getNoteFromCache, resetCurrentNote}
+  const recentNotes = computed(() => {
+    return notes.value.sort(mostRecentlyUpdatedFirst)
+  })
+
+  return { notes, locateIndex, addNote, loadFromAPI, deleteNote, getNoteFromAPI, calculateNoteKey, currentNote, getNoteFromCache, resetCurrentNote, recentNotes}
 }

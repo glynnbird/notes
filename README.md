@@ -1,4 +1,6 @@
+# Notes
 
+A simple markdown note taker web app built using the Cloudflare APIs.
 
 ## API calls
 

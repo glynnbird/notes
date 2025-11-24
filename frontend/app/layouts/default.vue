@@ -4,6 +4,7 @@ const { auth } = useAuth()
 const route = useRoute()
 const { queue } = useShowAlert()
 const { busy } = useBusy()
+const { currentNote, notes } = useNotesList()
 
 // local page items
 const drawer = ref(false)
@@ -12,6 +13,7 @@ async function home() {
   await navigateTo('/')
   window.scrollTo(0, 0)
 }
+
 </script>
 <template>
   <v-app theme="light">
@@ -19,12 +21,17 @@ async function home() {
       <template v-slot:prepend>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </template>
-      <v-app-bar-title @click="home()" style="user-select:none;">Notes</v-app-bar-title>
+      <v-app-bar-title @click="home()" style="user-select:none;">Notes
+        <span v-if="currentNote && currentNote.title"> - {{  currentNote.title }}</span>
+      </v-app-bar-title>
       <template v-slot:append>
         <v-progress-circular v-if="busy" style="margin-right: 10px;" size="small" color="blue" indeterminate></v-progress-circular>
-        <v-chip size="small" label color="white">1</v-chip>
+        <v-chip size="small" label color="white">{{ notes.length }}</v-chip>
         <v-btn v-if="route.name === 'index'" icon="mdi-plus" @click="navigateTo('/add')"></v-btn>
         <v-btn v-if="route.name !== 'index'" icon="mdi-chevron-left" @click="$router.back()"></v-btn>
+      </template>
+      <template v-slot:extension v-if="route.name == '[id]'">
+
       </template>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" location="left">

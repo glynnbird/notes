@@ -5,6 +5,7 @@ export default function () {
 
   // composables
   const notes = useState('notes', () => [])
+  const currentNote = useState('currentNote', () => {})
   const { auth } = useAuth()
   const stick = useState('stick', () => { return false })
   const { setBusy, unsetBusy } = useBusy()
@@ -38,6 +39,9 @@ export default function () {
     unsetBusy()
   }
 
+  function resetCurrentNote() {
+    currentNote.value = null
+  }
 
   // add a new note
   async function addNote(note, push = true) {
@@ -45,7 +49,7 @@ export default function () {
     try {
       console.log('API', '/api/add', note)
       const ret = await $api('/api/add', { body: note })
-      note.id = note.id
+      note.id = ret.id
       if (push) {
         notes.value.push(note)
       } else {
@@ -55,6 +59,9 @@ export default function () {
         }
       }
       localStorage.setItem(NOTES_KEY, JSON.stringify(notes.value))
+
+      // cache individual note too
+      localStorage.setItem(calculateNoteKey(note.id), JSON.stringify(note))
       
       // create alert
       showAlert('Added/updated note', 'primary')
@@ -72,6 +79,7 @@ export default function () {
       console.log('API', '/api/get')
       const r = await $api('/api/get', { body: JSON.stringify({ id }) })
       retval = r.doc
+      currentNote.value = retval
     } catch (e) {
       console.error('Could not load note', id, e)
       // create alert
@@ -79,6 +87,19 @@ export default function () {
     }
     unsetBusy()
     return retval
+  }
+
+  function getNoteFromCache(id) {
+    let retval = {}
+    const cachedNote = localStorage.getItem(calculateNoteKey(id))
+    if (cachedNote) {
+      console.log('loaded note from cache')
+      currentNote.value = JSON.parse(cachedNote)
+    } 
+  }
+
+  const calculateNoteKey =  function(id) {
+    return NOTES_KEY + '_' + id
   }
 
   const locateIndex = (id) => {
@@ -100,6 +121,11 @@ export default function () {
     setBusy()
     console.log('API', '/api/del', id)
     await $api('/api/del', { body: { id } })
+    const i = locateIndex(id)
+    if (i > -1) {
+      notes.value.splice(i, 1)
+    }
+    localStorage.removeItem(calculateNoteKey(id))
     unsetBusy()
 
     // create alert
@@ -124,5 +150,5 @@ export default function () {
     }, 1)
   }
 
-  return { notes, locateIndex, addNote, loadFromAPI, deleteNote, getNoteFromAPI}
+  return { notes, locateIndex, addNote, loadFromAPI, deleteNote, getNoteFromAPI, calculateNoteKey, currentNote, getNoteFromCache, resetCurrentNote}
 }

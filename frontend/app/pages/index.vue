@@ -1,5 +1,6 @@
 <script setup>
-  const { notes } = useNotesList()
+  const { notes, resetCurrentNote } = useNotesList()
+  resetCurrentNote()
 </script>
 <template>
   <!-- refresh the app -->

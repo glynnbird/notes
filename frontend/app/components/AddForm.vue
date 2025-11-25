@@ -6,6 +6,6 @@ const { doc} = defineProps(['doc'])
 <template>
   <v-form>
     <v-text-field v-model="doc.title" label="Title" required autofocus></v-text-field>
-    <v-textarea v-model="doc.body" label="Body" style="height: 800px"></v-textarea>
+    <v-textarea v-model="doc.body" label="Body" style="height: 600px"></v-textarea>
   </v-form>
 </template>

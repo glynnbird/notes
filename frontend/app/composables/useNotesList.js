@@ -50,6 +50,7 @@ export default function () {
       console.log('API', '/api/add', note)
       const ret = await $api('/api/add', { body: note })
       note.id = ret.id
+      note.lastEdited = new Date().getTime()
       if (push) {
         notes.value.push(note)
       } else {

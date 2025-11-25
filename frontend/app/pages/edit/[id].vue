@@ -1,5 +1,5 @@
 <script setup>
-  const { addNote, currentNote, getNoteFromAPI, getNoteFromCache } = useNotesList()
+  const { addNote, currentNote, getNoteFromAPI, getNoteFromCache, deleteNote } = useNotesList()
   const route = useRoute()
   const id = route.params.id
 
@@ -13,6 +13,12 @@
     await navigateTo('/')
   }
 
+  async function deleteThisNote() {
+    await deleteNote(id)
+    await navigateTo('/')
+  }
+
+
 </script>
 <template>
   <v-card>
@@ -22,6 +28,7 @@
     </v-card-text>
     <v-card-actions>
       <v-btn color="primary" @click="edit">Edit</v-btn>
+      <v-btn color="error" @click="deleteThisNote">Delete</v-btn>
     </v-card-actions>
   </v-card>
 

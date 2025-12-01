@@ -8,15 +8,25 @@
 
   resetCurrentNote()
 </script>
+<style>
+.gap {
+  margin-bottom: 10px;
+}
+</style>
 <template>
   <!-- refresh the app -->
   <PWARefresh></PWARefresh>
+
+  <v-card class="gap" :color="note.colour" v-for="note in recentNotes" :to="`/note/${note.id}`">
+   <v-card-title>{{ note.title }}</v-card-title>
+   <v-card-text>{{ timeAgo.format(new Date(parseInt(note.lastEdited)), 'mini') }}</v-card-text>
+  </v-card>
 
   <v-list>
     <v-list-item v-for="note in recentNotes" 
       :title="note.title" 
       :subtitle="timeAgo.format(new Date(parseInt(note.lastEdited)), 'mini')" 
-      :to="`/note/${note.id}`">
+      >
     </v-list-item>
   </v-list>
 </template>

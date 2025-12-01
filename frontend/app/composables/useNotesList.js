@@ -32,7 +32,6 @@ export default function () {
       const r = await $api('/api/list')
       notes.value = r.list
       localStorage.setItem(NOTES_KEY, JSON.stringify(notes.value))
-      
     } catch (e) {
       console.error('failed to fetch list of notes', e)
     }

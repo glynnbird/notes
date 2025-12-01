@@ -28,7 +28,7 @@ async function edit() {
 }
 </style>
 <template>
-  <v-card>
+  <v-card :colour="currentNote.colour">
     <v-card-title>{{currentNote.title}}</v-card-title>
     <v-card-text>
        <MDCRenderer v-if="ast?.body" class="markdown-body fillherup" :body="ast.body" :data="ast.data" />

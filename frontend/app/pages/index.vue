@@ -22,11 +22,4 @@
    <v-card-text>{{ timeAgo.format(new Date(parseInt(note.lastEdited)), 'mini') }}</v-card-text>
   </v-card>
 
-  <v-list>
-    <v-list-item v-for="note in recentNotes" 
-      :title="note.title" 
-      :subtitle="timeAgo.format(new Date(parseInt(note.lastEdited)), 'mini')" 
-      >
-    </v-list-item>
-  </v-list>
 </template>

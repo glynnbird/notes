@@ -49,7 +49,8 @@ const generateMetadata = function (doc) {
     title: doc.title,
     timestamp: doc.timestamp,
     lastEdited: doc.lastEdited,
-    colour: doc.colour
+    colour: doc.colour,
+    tags: doc.tags
   }
 }
 // save an old doc into the archive

@@ -12,6 +12,9 @@
 .gap {
   margin-bottom: 10px;
 }
+.chipgap {
+  margin-right: 5px;
+}
 </style>
 <template>
   <!-- refresh the app -->
@@ -19,6 +22,7 @@
 
   <v-card class="gap" :color="note.colour" v-for="note in recentNotes" :to="`/note/${note.id}`">
    <v-card-title>{{ note.title }}</v-card-title>
+   <v-card-subtitle ><v-chip class="chipgap" variant="flat" color="white" v-if="note.tags" v-for="tag of note.tags.split(',')">{{ tag }}</v-chip></v-card-subtitle>
    <v-card-text>{{ timeAgo.format(new Date(parseInt(note.lastEdited)), 'mini') }}</v-card-text>
   </v-card>
 

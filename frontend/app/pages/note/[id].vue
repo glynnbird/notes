@@ -27,6 +27,7 @@ async function edit() {
 <template>
   <v-card :colour="currentNote.colour">
     <v-card-title>{{currentNote.title}}</v-card-title>
+    <v-card-subtitle ><v-chip v-if="currentNote.tags" v-for="tag of currentNote.tags.split(',')">{{ tag }}</v-chip></v-card-subtitle>
     <v-card-text>
       <MDC class="markdown-body fillherup" :value="currentNote.body" />
     </v-card-text>

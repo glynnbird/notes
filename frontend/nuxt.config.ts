@@ -12,13 +12,20 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [
-      // @ts-expect-error
       vuetify({ autoImport: true })
     ],
     vue: {
       template: {
         transformAssetUrls,
       },
+    },
+    optimizeDeps: {
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        'javascript-time-ago',
+        'javascript-time-ago/locale/en',
+      ]
     }
   },
   app: {

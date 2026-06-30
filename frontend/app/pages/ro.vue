@@ -2,6 +2,16 @@
   const { recentNotes, resetCurrentNote } = useNotesList()
   definePageMeta({ layout : 'minimal'})
 
+  const route = useRoute()
+  const { auth } = useAuth()
+  const apikey = route.query.apikey
+  if (apikey) {
+    auth.value = {
+      authenticated: true,
+      apiKey: apikey
+    }
+  }
+
   import TimeAgo from 'javascript-time-ago'
   import en from 'javascript-time-ago/locale/en'
   TimeAgo.addDefaultLocale(en)

@@ -1,16 +1,18 @@
 <script setup>
-  const { recentNotes, resetCurrentNote } = useNotesList()
+
   definePageMeta({ layout : 'minimal'})
 
   const route = useRoute()
   const { auth } = useAuth()
   const apikey = route.query.apikey
   if (apikey) {
+    console.log('GOT',apikey)
     auth.value = {
       authenticated: true,
       apiKey: apikey
     }
   }
+  const { recentNotes, resetCurrentNote } = useNotesList()
 
   import TimeAgo from 'javascript-time-ago'
   import en from 'javascript-time-ago/locale/en'

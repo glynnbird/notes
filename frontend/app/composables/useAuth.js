@@ -22,7 +22,6 @@ export default function () {
     auth.value.authenticated = true
     auth.value.apiKey = apiKey
     localStorage.setItem(AUTH_LOCAL_STORAGE_KEY, apiKey)
-    await navigateTo('/')
   }
 
   async function logout() {

@@ -3,14 +3,10 @@
   definePageMeta({ layout : 'minimal'})
 
   const route = useRoute()
-  const { auth } = useAuth()
+  const { login } = useAuth()
   const apikey = route.query.apikey
   if (apikey) {
-    console.log('GOT',apikey)
-    auth.value = {
-      authenticated: true,
-      apiKey: apikey
-    }
+    await login(apikey)
   }
   const { recentNotes, resetCurrentNote } = useNotesList()
 

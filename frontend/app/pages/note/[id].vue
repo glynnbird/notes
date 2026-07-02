@@ -44,8 +44,7 @@ async function edit() {
 }
 </style>
 <template>
-  <v-btn class="butpad" to="/ro" v-if="readonly">Back</v-btn>
-  <v-card :colour="currentNote? currentNote.colour: ''">
+  <v-card v-if="currentNote":colour="currentNote? currentNote.colour: ''">
     <v-card-title>{{currentNote.title}}</v-card-title>
     <v-card-subtitle ><v-chip v-if="currentNote.tags" v-for="tag of currentNote.tags.split(',')">{{ tag }}</v-chip></v-card-subtitle>
     <v-card-text>

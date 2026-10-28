@@ -22,15 +22,10 @@
 
 </script>
 <template>
-  <v-card>
-    <v-card-title>Edit</v-card-title>
-    <v-card-text>
-      <AddForm v-if="currentNote != null" :doc="currentNote"></AddForm>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn color="primary" @click="edit">Edit</v-btn>
-      <v-btn color="error" @click="deleteThisNote">Delete</v-btn>
-    </v-card-actions>
-  </v-card>
-
+  <h2>Edit Note</h2>
+  <AddForm v-if="currentNote != null" :doc="currentNote"></AddForm>
+  <v-btn-group variant="outlined" divided>
+    <v-btn color="primary" @click="edit">Edit</v-btn>
+    <v-btn color="error" @click="deleteThisNote">Delete</v-btn>
+  </v-btn-group>
 </template>

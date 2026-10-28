@@ -14,7 +14,8 @@ const colours = [ ['#B71C1C', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47
 }
 .editor {
   height: 600px;
-  font-size: 16px;
+  margin-top: 20px;
+
 }
 </style>
 <template>

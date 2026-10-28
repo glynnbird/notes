@@ -8,7 +8,8 @@ export default defineNuxtConfig({
   modules: [
     // from https://github.com/vite-pwa/nuxt?tab=readme-ov-file#-usage
     '@vite-pwa/nuxt',
-    "@nuxtjs/mdc"
+    "@nuxtjs/mdc",
+    'nuxt-monaco-editor'
   ],
   vite: {
     plugins: [

@@ -12,6 +12,10 @@ const colours = [ ['#B71C1C', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47
   margin-bottom: 10px;
   display: block !important;
 }
+.editor {
+  height: 600px;
+  font-size: 16px;
+}
 </style>
 <template>
   <v-form>
@@ -22,6 +26,7 @@ const colours = [ ['#B71C1C', '#880E4F', '#4A148C', '#311B92', '#1A237E', '#0D47
     <v-field>
       <v-color-picker swatches-max-height="220" height="200" :swatches="colours" class="ma-2" show-swatches v-model="doc.colour" hide-canvas hide-eye-dropper hide-header hide-inputs hide-sliders hide-title></v-color-picker>
     </v-field>
-    <v-textarea v-model="doc.body" label="Body" style="height: 600px"></v-textarea>
+    <!--<v-textarea v-model="doc.body" label="Body" style="height: 600px"></v-textarea>-->
+    <MonacoEditor class="editor"v-model="doc.body" lang="markdown" />
   </v-form>
 </template>

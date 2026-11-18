@@ -38,10 +38,6 @@ resource "cloudflare_pages_project" "frontend_project" {
           }
         }
 
-        ai_bindings = {
-          AI = {}
-        }
-
         kv_namespaces = {
           NOTESKV = { 
             namespace_id = cloudflare_workers_kv_namespace.noteskv.id
@@ -58,10 +54,6 @@ resource "cloudflare_pages_project" "frontend_project" {
             type = "plain_text"
             value = random_string.apiKey.id
           }
-        }
-
-        ai_bindings = {
-          AI = {}
         }
 
         kv_namespaces = {
